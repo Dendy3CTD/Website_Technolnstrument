@@ -1,0 +1,36 @@
+{% extends "admin/change_list.html" %}
+{% load i18n %}
+
+{% block content %}
+  <div class="product-admin-category-block" style="margin-bottom: 24px; padding: 16px; background: var(--body-bg, #f8f8f8); border: 1px solid var(--border-color, #e0e0e0); border-radius: 6px;">
+    <p style="margin: 0 0 12px; font-weight: 600; font-size: 14px; color: var(--body-fg, #333);">Сначала выберите категорию</p>
+    {% if category_tabs %}
+    <ul class="category-tabs" style="display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0;">
+      <li style="margin: 0;">
+        <a href="{{ request.path }}"
+           style="display: block; padding: 10px 16px; text-decoration: none; color: #417690; border-radius: 4px; font-weight: 500; background: var(--darkened-bg, #fff); border: 1px solid var(--border-color, #ddd);"
+           class="{% if not request.GET.category__id__exact %}category-tab-active{% endif %}">
+          Все товары
+        </a>
+      </li>
+      {% for cat in category_tabs %}
+      <li style="margin: 0;">
+        <a href="{{ request.path }}?category__id__exact={{ cat.id }}"
+           style="display: block; padding: 10px 16px; text-decoration: none; color: #417690; border-radius: 4px; font-weight: 500; background: var(--darkened-bg, #fff); border: 1px solid var(--border-color, #ddd);"
+           class="{% if request.GET.category__id__exact == cat.id|stringformat:'s' %}category-tab-active{% endif %}">
+          {{ cat.name }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p style="margin: 0; font-size: 13px; color: var(--body-quiet-color, #666);">Нет категорий. <a href="{% url 'admin:main_category_add' %}">Добавьте категорию</a>, затем здесь появятся вкладки для фильтрации товаров.</p>
+    {% endif %}
+    <style>
+      .category-tabs a:hover { background: var(--selected-bg, #e8e8e8) !important; }
+      .category-tabs a.category-tab-active { background: #417690 !important; color: #fff !important; border-color: #417690 !important; }
+    </style>
+  </div>
+
+  {{ block.super }}
+{% endblock %}

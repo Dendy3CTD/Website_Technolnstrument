@@ -1,0 +1,180 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ category.name }} — Technolnstrument</title>
+  <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <a href="{% url 'main:home' %}" class="logo">Technolnstrument</a>
+      <nav class="nav">
+        <a href="{% url 'main:home' %}" class="nav__link nav__link--active">Каталог</a>
+        <a href="#" class="nav__link">Доставка и оплата</a>
+        <a href="#" class="nav__link">Сервис</a>
+        <a href="#" class="nav__link">Контакты</a>
+      </nav>
+      <div class="header__right">
+        <a href="tel:88001234567" class="header__phone">8 (800) 123-45-67</a>
+        <div class="header__icons">
+          <button type="button" class="header-icon" aria-label="Поиск" id="btnSearch">
+            <svg class="header-icon__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </button>
+          <button type="button" class="header-icon header-icon--cart" aria-label="Корзина" id="btnCart">
+            <svg class="header-icon__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            <span class="header-icon__count cart-btn__count">0</span>
+          </button>
+          <button type="button" class="header-icon" aria-label="Сравнение">
+            <svg class="header-icon__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="4" height="12" rx="1"/><rect x="10" y="4" width="4" height="16" rx="1"/><rect x="16" y="12" width="4" height="8" rx="1"/></svg>
+          </button>
+          <button type="button" class="header-icon" id="btnAccount" aria-label="Личный кабинет" aria-expanded="false">
+            <svg class="header-icon__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></svg>
+          </button>
+          <button type="button" class="header-icon header-icon--menu" aria-label="Меню" id="btnMenu" aria-expanded="false">
+            <svg class="header-icon__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="panel-overlay" id="panelOverlay" aria-hidden="true"></div>
+  <aside class="slide-panel" id="slidePanel" aria-label="Меню">
+    <div class="slide-panel__topbar">
+      <a href="{% url 'main:home' %}" class="slide-panel__logo">Technolnstrument</a>
+      <button type="button" class="slide-panel__icon slide-panel__icon--close" id="panelClose" aria-label="Закрыть">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="slide-panel__body slide-panel__body--split">
+      <div class="slide-panel__left">
+        <h2 class="slide-panel__company-name">Technolnstrument:</h2>
+        <p class="slide-panel__slogan">Инструменты в каждом деле</p>
+      </div>
+      <div class="slide-panel__right">
+        <nav class="slide-panel__nav">
+          <a href="#" class="slide-panel__link">О бренде</a>
+          <a href="#" class="slide-panel__link">Новости</a>
+          <a href="#" class="slide-panel__link">Статьи</a>
+          <a href="#" class="slide-panel__link">Доставка и оплата</a>
+          <a href="#" class="slide-panel__link">Застройщикам</a>
+          <a href="#" class="slide-panel__link">Электронный каталог</a>
+          <a href="#" class="slide-panel__link">Малая бытовая техника: каталог</a>
+        </nav>
+        <h3 class="slide-panel__info-title">Сервис</h3>
+        <nav class="slide-panel__nav">
+          <a href="#" class="slide-panel__link">Сервисные центры</a>
+          <a href="#" class="slide-panel__link">Гарантия и сервис</a>
+          <a href="#" class="slide-panel__link">Возврат товара</a>
+        </nav>
+        <h3 class="slide-panel__info-title">Связаться с нами</h3>
+        <nav class="slide-panel__nav">
+          <a href="#" class="slide-panel__link">Контакты</a>
+          <a href="#" class="slide-panel__link">Где купить</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <div class="auth-overlay" id="authOverlay" aria-hidden="true"></div>
+  <div class="auth-modal" id="authModal" role="dialog" aria-labelledby="authModalTitle" aria-modal="true">
+    <div class="auth-modal__inner">
+      <div class="auth-modal__header">
+        <h2 class="auth-modal__title" id="authModalTitle">Введите номер телефона</h2>
+        <button type="button" class="auth-modal__close" id="authModalClose" aria-label="Закрыть">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <p class="auth-modal__desc">Укажите номер телефона, мы отправим СМС с кодом для входа.</p>
+      <div class="auth-modal__tab auth-modal__tab--phone is-active" id="authTabPhone">
+        <form class="auth-modal__form" id="authFormPhone" novalidate>
+          <div class="auth-modal__phone-wrap">
+            <span class="auth-modal__country">+7</span>
+            <input type="tel" class="auth-modal__input" id="authPhone" placeholder="___-___-__-__" inputmode="numeric" maxlength="14" autocomplete="tel">
+          </div>
+          <button type="submit" class="btn btn--primary auth-modal__submit">Продолжить</button>
+        </form>
+      </div>
+      <div class="auth-modal__tab auth-modal__tab--email" id="authTabEmail">
+        <form class="auth-modal__form" id="authFormEmail" novalidate>
+          <input type="email" class="auth-modal__input auth-modal__input--full" id="authEmail" placeholder="E-mail" autocomplete="email">
+          <button type="submit" class="btn btn--primary auth-modal__submit">Продолжить</button>
+        </form>
+      </div>
+      <div class="auth-modal__legal">
+        <label class="auth-modal__checkbox-label">
+          <input type="checkbox" class="auth-modal__checkbox" id="authAgree" name="agree">
+          <span class="auth-modal__checkbox-text">Нажимая кнопку «Продолжить», я принимаю <a href="#" class="auth-modal__link">Условия политики конфиденциальности</a> и <a href="#" class="auth-modal__link">Пользовательского соглашения</a>.</span>
+        </label>
+      </div>
+      <button type="button" class="auth-modal__switch" id="authSwitchTab">Войти по e-mail</button>
+    </div>
+  </div>
+
+  <main class="page">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Хлебные крошки">
+        <a href="{% url 'main:home' %}">Главная</a>
+        <span class="breadcrumb__sep">/</span>
+        <a href="{% url 'main:home' %}">Каталог</a>
+        <span class="breadcrumb__sep">/</span>
+        <span>{{ category.name }}</span>
+      </nav>
+
+      <section class="catalog-header">
+        <h1 class="catalog-header__title">{{ category.name }}</h1>
+        <p class="catalog-header__desc">
+          Товары категории «{{ category.name }}». Официальная гарантия, доставка по России.
+        </p>
+      </section>
+
+      <ul class="category-products-grid category-page-products" id="categoryPageProducts">
+        {% for product in category.products.all %}
+        <li class="category-product">
+          <a href="#" class="category-product__link">
+            <div class="category-product__img-wrap">
+              {% if product.image %}<img src="{{ product.image }}" alt="{{ product.name }}" class="category-product__img" width="280" height="280" loading="lazy">{% endif %}
+            </div>
+            <span class="category-product__name">{{ product.name }}</span>
+          </a>
+          <div class="category-product__price">{{ product.price|floatformat:2 }} ₽</div>
+          <button type="button" class="btn btn--primary category-product__cart">В корзину</button>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__col">
+          <strong class="footer__title">Technolnstrument</strong>
+          <a href="#">О компании</a>
+          <a href="#">Доставка и оплата</a>
+          <a href="#">Контакты</a>
+        </div>
+        <div class="footer__col">
+          <strong class="footer__title">Сервис</strong>
+          <a href="#">Гарантия</a>
+          <a href="#">Сервисные центры</a>
+        </div>
+        <div class="footer__col">
+          <strong class="footer__title">Контакты</strong>
+          <a href="tel:88001234567">8 (800) 123-45-67</a>
+          <a href="mailto:info@technolnstrument.ru">info@technolnstrument.ru</a>
+        </div>
+      </div>
+      <p class="footer__copy">© Technolnstrument. Промышленные инструменты.</p>
+    </div>
+  </footer>
+
+  <script src="{% static 'main/js/main.js' %}" defer></script>
+</body>
+</html>
